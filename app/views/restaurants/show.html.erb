@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <h3><%= @restaurant.address %> - <i class="fas fa-phone"></i> <%= @restaurant.phone_number %></h3>
+  <%= link_to "Back to list", restaurants_path, class: "btn btn-primary" %>
+  <% @restaurant.reviews.each do |review| %>
+    <p><%= review.content %> - <%= review.rating %></p>
+  <% end %>
+  <!-- <p><%= @restaurant.reviews %></p> -->
+  <h4>Add your review</h4>
+    <%= simple_form_for [@restaurant, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+      <%= f.submit %>
+    <% end %>
+
+  <!-- button add a review -->
+</div>
+
